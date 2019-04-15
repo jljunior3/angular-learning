@@ -1,0 +1,14 @@
+<div style="margin-top: 20px" *ngIf="form">
+  <pre class="bg-secondary text-white">
+    Detalhes do FORM
+  </pre>
+  <pre class="text-left bg-secondary text-white">
+    Form válido: <span class="badge" [class.badge-success]="form.valid" [class.badge-danger]="!form.valid">{{ form.valid }}</span>
+  </pre>
+  <pre class="text-left bg-secondary text-white">
+    Form submetido: <span class="badge" [class.badge-success]="form.submitted" [class.badge-danger]="!form.submitted">{{ form.submitted }}</span>
+  </pre>
+  <pre class="text-left bg-secondary text-white">
+    Valores: <br><span class="text-left">{{ form.value | json }}</span>
+  </pre>
+</div>

@@ -1,0 +1,343 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="nome">Nome</label>
+                <input
+                    class="form-control"
+                    id="nome"
+                    name="nome"
+                    type="text"
+                    placeholder="seu nome"
+                    formControlName="nome"
+                    [ngClass]="aplicaCssValidErro('nome')"
+                />
+                <app-msg-campo-erro
+                    [campo]="validaCampo('nome')"
+                    mensagem="O nome é obrigatório"
+                ></app-msg-campo-erro>
+            </div>
+            <div class="col-md-12">
+                <label for="email">Email</label>
+                <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    type="text"
+                    placeholder="email@email.com.br"
+                    formControlName="email"
+                    [ngClass]="aplicaCssValidErro('email')"
+                />
+                <app-msg-campo-erro
+                    [campo]="validaCampo('email')"
+                    mensagem="O email é obrigatório"
+                ></app-msg-campo-erro>
+                <app-msg-campo-erro
+                    [campo]="validaEmailValido('email')"
+                    mensagem="O email é inválido"
+                ></app-msg-campo-erro>
+            </div>
+            <div class="col-md-12">
+                <label for="confirmarEmail">Confirmar Email</label>
+                <input
+                    class="form-control"
+                    id="confirmarEmail"
+                    name="confirmarEmail"
+                    type="text"
+                    placeholder="email@email.com.br"
+                    formControlName="confirmarEmail"
+                    [ngClass]="aplicaCssValidErro('confirmarEmail')"
+                />
+                <app-msg-campo-erro
+                    [campo]="validaCampo('confirmarEmail')"
+                    mensagem="O email é obrigatório"
+                ></app-msg-campo-erro>
+                <app-msg-campo-erro
+                    [campo]="
+                        formulario.get('confirmarEmail').hasError('equalsTo')
+                    "
+                    mensagem="O email é inválido"
+                ></app-msg-campo-erro>
+            </div>
+        </div>
+    </div>
+
+    <div formGroupName="endereco">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="cep">CEP</label>
+                    <input
+                        class="form-control"
+                        [ngClass]="aplicaCssValidErro('endereco.cep')"
+                        id="cep"
+                        name="cep"
+                        type="text"
+                        placeholder="00000-999"
+                        formControlName="cep"
+                        mask="00000-000"
+                        (blur)="consultaCep()"
+                    />
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.cep')"
+                        mensagem="O cep é obrigatório"
+                    ></app-msg-campo-erro>
+                </div>
+                <div class="col-md-3">
+                    <label for="numero">Número</label>
+                    <input
+                        class="form-control"
+                        [ngClass]="aplicaCssValidErro('endereco.numero')"
+                        id="numero"
+                        name="numero"
+                        type="text"
+                        placeholder="999"
+                        formControlName="numero"
+                        mask="000"
+                    />
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.numero')"
+                        mensagem="O numero é obrigatório"
+                    ></app-msg-campo-erro>
+                </div>
+                <div class="col-md-6">
+                    <label for="complemento">Complemento</label>
+                    <input
+                        [ngClass]="aplicaCssValidErro('endereco.complemento')"
+                        class="form-control"
+                        id="complemento"
+                        name="complemento"
+                        type="text"
+                        placeholder="ex: sobrado"
+                        formControlName="complemento"
+                    />
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.complemento')"
+                        mensagem="O complemento é obrigatório"
+                    >
+                    </app-msg-campo-erro>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="rua">Rua</label>
+                    <input
+                        [ngClass]="aplicaCssValidErro('endereco.rua')"
+                        class="form-control"
+                        id="rua"
+                        name="rua"
+                        type="text"
+                        placeholder=""
+                        formControlName="rua"
+                    />
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.rua')"
+                        mensagem="A rua é obrigatória"
+                    ></app-msg-campo-erro>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="bairro">Bairro</label>
+                    <input
+                        [ngClass]="aplicaCssValidErro('endereco.bairro')"
+                        class="form-control"
+                        id="bairro"
+                        name="bairro"
+                        type="text"
+                        placeholder=""
+                        required
+                        formControlName="bairro"
+                    />
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.bairro')"
+                        mensagem="O bairro é obrigatório"
+                    ></app-msg-campo-erro>
+                </div>
+                <div class="col-md-4">
+                    <label for="cidade">Cidade</label>
+                    <input
+                        [ngClass]="aplicaCssValidErro('endereco.cidade')"
+                        class="form-control"
+                        id="cidade"
+                        name="cidade"
+                        type="text"
+                        placeholder=""
+                        required
+                        formControlName="cidade"
+                    />
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.cidade')"
+                        mensagem="A cidade é obrigatória"
+                    ></app-msg-campo-erro>
+                </div>
+                <div class="col-md-3">
+                    <label for="estado">Estado</label>
+                    <select
+                        [ngClass]="aplicaCssValidErro('endereco.estado')"
+                        class="form-control"
+                        id="estado"
+                        name="estado"
+                        formControlName="estado"
+                    >
+                        <option
+                            *ngFor="let estado of (estados | async)"
+                            [value]="estado.sigla"
+                            >{{ estado.nome }}</option
+                        >
+                    </select>
+                    <app-msg-campo-erro
+                        [campo]="validaCampo('endereco.estado')"
+                        mensagem="O estado é obrigatório"
+                    ></app-msg-campo-erro>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-5">
+                <label for="cargo">Cargo</label>
+                <select
+                    [ngClass]="aplicaCssValidErro('cargo')"
+                    class="form-control"
+                    id="cargo"
+                    name="cargo"
+                    formControlName="cargo"
+                    [compareWith]="compararCargos"
+                >
+                    <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{
+                        cargo.desc
+                    }}</option>
+                </select>
+                <!-- <app-msg-campo-erro [campo]="validaCampo('cargos')" mensagem="O estado é obrigatório"></app-msg-campo-erro> -->
+            </div>
+            <div class="col-md-4">
+                <label for="tecnologias">Tecnologias</label>
+                <select
+                    [ngClass]="aplicaCssValidErro('tecnologias')"
+                    class="form-control"
+                    id="tecnologias"
+                    name="tecnologias"
+                    formControlName="tecnologias"
+                    multiple
+                >
+                    <option
+                        *ngFor="let tecnologia of tecnologias"
+                        [value]="tecnologia.nome"
+                        >{{ tecnologia.desc }}</option
+                    >
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="newsletter">Nesletter</label>
+                <div>
+                    <div
+                        class="form-check form-check-inline"
+                        *ngFor="let newsletter of newsletterOp"
+                    >
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="newsletter"
+                            [value]="newsletter.nome"
+                            formControlName="newsletter"
+                        />
+                        <label class="form-check-label" for="newsletter">{{
+                            newsletter.desc
+                        }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-check">
+                    <input
+                        [ngClass]="aplicaCssValidErro('termos')"
+                        class="form-check-input"
+                        type="checkbox"
+                        id="termos"
+                        formControlName="termos"
+                    />
+                    <label class="form-check-label" for="termos">
+                        aceite os termos
+                    </label>
+                </div>
+                <app-msg-campo-erro
+                    [campo]="validaCampo('termos')"
+                    mensagem="Aceitar os termos é obrigatório"
+                ></app-msg-campo-erro>
+            </div>
+            <div class="col-md-7">
+                <div
+                    class="form-check form-check-inline"
+                    formArrayName="frameworks"
+                    *ngFor="
+                        let item of formulario.get('frameworks').controls;
+                        let i = index
+                    "
+                >
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox1"
+                        value="option1"
+                        [formControlName]="i"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1">{{
+                        frameworks[i]
+                    }}</label>
+                </div>
+                <app-msg-campo-erro
+                    [campo]="!formulario.get('frameworks').valid"
+                    mensagem="Selecione ao menos 1 opção"
+                ></app-msg-campo-erro>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label for="numero">Número Apenas</label>
+                <input
+                    class="form-control"
+                    id="numero"
+                    name="numero"
+                    type="text"
+                    placeholder="numero"
+                    formControlName="numero"
+                    [ngClass]="aplicaCssValidErro('numero')"
+                />
+                <app-msg-campo-erro
+                    [campo]="
+                        formulario.get('numero').hasError('numeroInvalido')
+                    "
+                    mensagem="Apenas insira números (no total de 4 números)"
+                ></app-msg-campo-erro>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        Submit
+    </button>
+    <button class="btn btn-danger" type="button" (click)="resetar()">
+        Cancelar
+    </button>
+    <button class="btn btn-warning" type="button" (click)="setarCargo()">
+        Cargo
+    </button>
+    <button class="btn btn-dark" type="button" (click)="setarTecnologias()">
+        Tecnologias
+    </button>
+</form>
+
+<app-form-debug [form]="formulario"></app-form-debug>

@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Formulários</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-item nav-link" routerLink="/templateForm">Template Data</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-item nav-link" routerLink="/dataForm">Data Form</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <router-outlet></router-outlet>
+</div>

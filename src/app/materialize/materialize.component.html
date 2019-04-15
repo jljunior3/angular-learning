@@ -1,0 +1,219 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Logo</a>
+        <a materialize="sideNav" href="#" data-activates="slide-navigation" class="button-collapse"><i
+        class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li routeLinkActive="active"><a routerLink="/">Home</a></li>
+            <li routeLinkActive="active"><a routerLink="/other">Others</a></li>
+        </ul>
+
+        <ul id="slide-navigation" class="side-nav sidenav">
+            <li routeLinkActive="active"><a routerLink="/">Home</a></li>
+            <li routeLinkActive="active"><a routerLink="/other">Other</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+            <div class="collapsible-body">
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+            <div class="collapsible-body">
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+            <div class="collapsible-body">
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </li>
+    </ul>
+
+    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+
+    <br>
+    <br>
+
+
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s4">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s4">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s4">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="icon_telephone" type="tel" class="validate" required>
+                        <label for="icon_telephone">Telephone</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </form>
+
+
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div materialize="modal" id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+            <p>A bunch of text</p>
+            <p>A bunch of text</p>
+            <p>A bunch of text</p>
+            <p>A bunch of text</p>
+            <p>A bunch of text</p>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <div materialize="carousel" class="carousel">
+        <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/600/600/nature/1"></a>
+        <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/600/600/nature/2"></a>
+        <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/600/600/nature/3"></a>
+        <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/600/600/nature/4"></a>
+        <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/600/600/nature/5"></a>
+    </div>
+
+    <a materialize="tooltip" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover
+  me!</a>
+
+    <!-- Dropdown Trigger -->
+    <!-- <a materialize="dropdown" class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a> -->
+    <a materialize="dropdown" class='dropdown-trigger btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+    <!-- class='dropdown-trigger btn' href='#' data-target='dropdown1' -->
+
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!">three</a></li>
+        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+    </ul>
+
+    <a materialize="dropdown" class='dropdown-button btn' href='#' data-activates='dropdown11'>Drop Me!</a>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown11' class='dropdown-content'>
+        <li><a>one</a></li>
+        <li><a>two</a></li>
+        <li class="divider"></li>
+        <li><a>three</a></li>
+    </ul>
+
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs" materialize="tabs">
+                <li class="tab col s3"><a href="#test1">Test 1</a></li>
+                <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+                <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
+                <li class="tab col s3"><a href="#test4">Test 4</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">Test 1</div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m7">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/300/300/?random">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="collection">
+            <a href="#!" class="collection-item"><span class="badge">1</span>Alan</a>
+            <a href="#!" class="collection-item"><span class="new badge">4</span>Alan</a>
+            <a href="#!" class="collection-item">Alan</a>
+            <a href="#!" class="collection-item"><span class="badge">14</span>Alan</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                    <div class="col s2">
+                        <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img">
+                        <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s10">
+                        <span class="black-text">
+                 This is a square image. Add the "circle" class to it to make it appear circular.
+               </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
